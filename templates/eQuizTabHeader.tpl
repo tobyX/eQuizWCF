@@ -1,0 +1,1 @@
+<li id="eQuizEditTab"><a onclick="tabbedPane.openTab('eQuizEdit');">{lang}wcf.equiz{/lang}</a></li>

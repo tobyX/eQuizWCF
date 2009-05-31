@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE data SYSTEM "http://www.woltlab.com/DTDs/options.dtd">
+<data>
+	<import>
+		<categories>
+			<category name="equiz"></category>
+			<category name="equiz.timeout">
+				<parent>equiz</parent>
+			</category>
+			<category name="equiz.points">
+				<parent>equiz</parent>
+			</category>
+		</categories>
+
+		<options>
+			<option name="equiz_timeout">
+				<categoryname>equiz.timeout</categoryname>
+				<optiontype>integer</optiontype>
+				<showorder>1</showorder>
+				<defaultvalue>30</defaultvalue>
+			</option>
+			<option name="equiz_created">
+				<categoryname>equiz.points</categoryname>
+				<optiontype>integer</optiontype>
+				<showorder>1</showorder>
+				<defaultvalue>10</defaultvalue>
+			</option>
+			<option name="equiz_points">
+				<categoryname>equiz.points</categoryname>
+				<optiontype>integer</optiontype>
+				<showorder>2</showorder>
+				<defaultvalue>10</defaultvalue>
+			</option>
+			<option name="equiz_severity_multiply">
+				<categoryname>equiz.points</categoryname>
+				<optiontype>boolean</optiontype>
+				<showorder>3</showorder>
+				<defaultvalue>1</defaultvalue>
+			</option>
+		</options>
+	</import>
+</data>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE language SYSTEM "DTD/language.dtd">
+<language languagecode="de">
+
+	<category name="wcf.equiz">
+		<item name="wcf.equiz"><![CDATA[eQuiz]]></item>
+		<item name="wcf.equiz.question"><![CDATA[Quizfrage]]></item>
+		<item name="wcf.equiz.question.description"><![CDATA[Die Quizfrage, die es zu beantworten gilt...]]></item>
+		<item name="wcf.equiz.answers"><![CDATA[Antworten]]></item>
+		<item name="wcf.equiz.answers.description"><![CDATA[Die möglichen Antworten. Eine Antwort pro Zeile!]]></item>
+		<item name="wcf.equiz.answers.notEnoughQuestions"><![CDATA[Zwei Antworten sollten es schon sein...]]></item>
+		<item name="wcf.equiz.correctAnswers"><![CDATA[Richtige Antworten]]></item>
+		<item name="wcf.equiz.correctAnswers.description"><![CDATA[Hier bitte die Zeilennummern der richtigen Antworten durch Komma getrennt eintragen. Wenn also z.B. die richtigen Antworten in den Zeilen 2 und 4 im obigen Feld stehen, müsste man hier 2, 4 eintragen.]]></item>
+		<item name="wcf.equiz.correctAnswers.noAnswers"><![CDATA[Es muss mindestens eine richtige Antwort geben.]]></item>
+		<item name="wcf.equiz.correctAnswers.tooMuch"><![CDATA[Zuviele mögliche richtige Antworten.]]></item>
+		<item name="wcf.equiz.correctAnswers.invalid"><![CDATA[Bitte keine Zahlen kleiner 1 oder größer der maximalen Zeilenanzahl im oberen Feld angeben.]]></item>
+		<item name="wcf.equiz.result"><![CDATA[{if $eQuiz->votes == 0}Noch keine Antworten{else}Insgesamt {#$eQuiz->votes} Antwort{if $eQuiz->votes > 1}en{/if}{/if}]]></item>
+		<item name="wcf.equiz.countDown"><![CDATA[Lösungszeit]]></item>
+		<item name="wcf.equiz.secounds"><![CDATA[Sekunden]]></item>
+		<item name="wcf.equiz.answer.notValid"><![CDATA[Ungültige Antwort]]></item>
+		<item name="wcf.equiz.secounds"><![CDATA[Sekunden]]></item>
+		<item name="wcf.equiz.severity"><![CDATA[Schwierigkeit]]></item>
+		<item name="wcf.equiz.severity.description"><![CDATA[Welchem Schwierigkeitsgrad entspricht diese Frage?]]></item>
+		<item name="wcf.equiz.severity.1"><![CDATA[Leicht]]></item>
+		<item name="wcf.equiz.severity.2"><![CDATA[Standard]]></item>
+		<item name="wcf.equiz.severity.3"><![CDATA[Herausfordernd]]></item>
+		<item name="wcf.equiz.severity.4"><![CDATA[Harte Nuss]]></item>
+		<item name="wcf.equiz.severity.5"><![CDATA[Kopfzerbrecher]]></item>
+		<item name="wcf.equiz.copyright"><![CDATA[<a href="http://enigma-forum.de">Plugin: <strong>eQuiz</strong>, entwickelt von <strong>Toby</strong></a>]]></item>
+		<item name="wcf.equiz.timeOutUsers"><![CDATA[Zeit abgelaufen:]]></item>
+		<item name="wcf.equiz.choiceCount"><![CDATA[Es gibt {#$eQuiz->choiceCount} richtige Antworten.]]></item>
+	</category>
+
+	<category name="wcf.acp.option">
+		<item name="wcf.acp.option.category.equiz"><![CDATA[eQuiz]]></item>
+		<item name="wcf.acp.option.category.equiz.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.category.equiz.timeout"><![CDATA[Lösungszeit]]></item>
+		<item name="wcf.acp.option.category.equiz.timeout.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.equiz_timeout"><![CDATA[Lösungszeit]]></item>
+		<item name="wcf.acp.option.equiz_timeout.description"><![CDATA[Zeit in Sekunden die man für die Lösung der Quizfrage verbrauchen darf.]]></item>
+		<item name="wcf.acp.option.category.equiz.points"><![CDATA[Punkte]]></item>
+		<item name="wcf.acp.option.category.equiz.points.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.equiz_created"><![CDATA[Erstellung]]></item>
+		<item name="wcf.acp.option.equiz_created.description"><![CDATA[Punkte für die Erstellung eines neuen Quiz.]]></item>
+		<item name="wcf.acp.option.equiz_points"><![CDATA[Antwort]]></item>
+		<item name="wcf.acp.option.equiz_points.description"><![CDATA[Punkte für die Beantwortung eines Quiz. Wird durch die Anzahl der möglichen richtigen Antworten geteilt.]]></item>
+		<item name="wcf.acp.option.equiz_severity_multiply"><![CDATA[Schwierigkeitsgradmultiplikator für Antworten]]></item>
+		<item name="wcf.acp.option.equiz_severity_multiply.description"><![CDATA[Die Punkte für Antworten werden mit dem Schwierigkeitsgrad multipliziert.]]></item>
+	</category>
+
+	<category name="wcf.user.option">
+		<item name="wcf.user.option.category.profile.equiz"><![CDATA[eQuiz]]></item>
+		<item name="wcf.user.option.eQuizAnswered"><![CDATA[Quiz beantwortet]]></item>
+		<item name="wcf.user.option.eQuizPoints"><![CDATA[Quizpunkte]]></item>
+		<item name="wcf.user.option.eQuizCreated"><![CDATA[Quiz erstellt]]></item>
+	</category>
+
+</language>
