@@ -30,24 +30,10 @@ class EQuizHandler
 	 */
 	public function __construct($quizID, $canAnswerQuiz = true, $forwardScript = null, $messageType = 'eQuiz', $userID)
 	{
-		// get quiz
-		$sql = "SELECT 		poll_vote.pollID AS voted,
-							poll_vote.isChangeable,
-							poll.*
-				FROM 		wcf" . WCF_N . "_poll poll
-				LEFT JOIN 	wcf" . WCF_N . "_poll_vote poll_vote
-				ON 			(poll_vote.pollID = poll.pollID
-							" . (!WCF :: getUser()->userID ? "AND poll_vote.ipAddress = '" . escapeString(WCF :: getSession()->ipAddress) . "'" : '') . "
-							AND poll_vote.userID = " . WCF :: getUser()->userID . ")
-				WHERE 		poll.pollID = " . $quizID;
-
-		$result = WCF :: getDB()->sendQuery($sql);
-		$row = WCF :: getDB()->fetchArray($result);
-
 		if ($userID == WCF :: getUser()->userID)
 			$canAnswerQuiz = false;
 
-		$this->quiz = new EQuiz($row, $canAnswerQuiz);
+		$this->quiz = new EQuiz($quizID, null, $canAnswerQuiz);
 
 		// get quiz options
 		$sql = "SELECT 		poll_option_vote.*,
