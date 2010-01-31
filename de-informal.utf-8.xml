@@ -26,7 +26,7 @@
 		<item name="wcf.equiz.severity.3"><![CDATA[Herausfordernd]]></item>
 		<item name="wcf.equiz.severity.4"><![CDATA[Harte Nuss]]></item>
 		<item name="wcf.equiz.severity.5"><![CDATA[Kopfzerbrecher]]></item>
-		<item name="wcf.equiz.copyright"><![CDATA[<a href="http://enigma-forum.de">Plugin: <strong>eQuiz</strong>, entwickelt von <strong>Toby</strong></a>]]></item>
+		<item name="wcf.equiz.copyright"><![CDATA[<a href="http://enigma-forum.de"><strong>eQuiz</strong>, entwickelt von <strong>Toby</strong></a>]]></item>
 		<item name="wcf.equiz.timeOutUsers"><![CDATA[Zeit abgelaufen:]]></item>
 		<item name="wcf.equiz.choiceCount"><![CDATA[Es gibt {#$eQuiz->choiceCount} richtige Antworten.]]></item>
 	</category>

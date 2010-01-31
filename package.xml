@@ -5,20 +5,20 @@
 	<packageInformation>
 		<packageName>eQuiz-WCF</packageName>
 		<packageDescription>Ein Quizsystem fürs WBB3 - WCF-Elternpaket</packageDescription>
+		<packageURL>http://www.enigma-forum.de/board220-tobys-wbb-ecke/</packageURL>
 		<unique>1</unique>
-		<version>0.9.0</version>
-		<date>2008-06-03</date>
-		<license>cclicense.txt</license>
+		<version>1.0.0</version>
+		<date>2010-01-31</date>
 	</packageInformation>
 
 	<authorInformation>
 		<author>Tobias Friebel</author>
-		<authorURL>http://wbbmods.tobyf.de/trac/wiki/eQuiz</authorURL>
+		<authorURL>http://www.enigma-forum.de/</authorURL>
 	</authorInformation>
 
 	<requiredpackages>
-		<requiredpackage minversion="1.0.6">com.woltlab.wcf</requiredpackage>
-		<requiredpackage minversion="1.0.3">com.woltlab.wcf.data.message.poll</requiredpackage>
+		<requiredpackage minversion="1.1.0">com.woltlab.wcf</requiredpackage>
+		<requiredpackage minversion="1.1.0">com.woltlab.wcf.data.message.poll</requiredpackage>
 	</requiredpackages>
 
 	<instructions type="install">
@@ -30,12 +30,13 @@
 		<options>options.xml</options>
 		<useroptions>useroptions.xml</useroptions>
 	</instructions>
-
-	<instructions type="update" fromversion="0.8.*">
+	
+	<instructions type="update" fromversion="0.9*">
 		<languages languagecode="de">de.utf-8.xml</languages>
 		<languages languagecode="de-informal">de-informal.utf-8.xml</languages>
 		<files>files.tar</files>
 		<templates>templates.tar</templates>
+		<options>options.xml</options>
 	</instructions>
 
 </package>

@@ -281,6 +281,11 @@ class EQuizHandler
 		if ($rightAnswered == -1 && $wrongAnswered == -1)
 		{
 			$points = -EQUIZ_POINTS * (EQUIZ_SEVERITY_MULTIPLY ? $this->quiz->eQuizSeverity : 1);
+			
+			if (defined('GUTHABEN_ENABLE_GLOBAL') && defined('EQUIZ_GUTHABEN_PLAY') && EQUIZ_GUTHABEN_PLAY > 0)
+			{
+				Guthaben :: sub(EQUIZ_GUTHABEN_PLAY, 'wbb.guthaben.log.equizplay', $this->quiz->question, 'index.php?page=Thread&postID='.$this->quiz->messageID, null, true);
+			}
 		}
 		else
 		{
@@ -290,6 +295,14 @@ class EQuizHandler
 			$points += $rightAnswered * (EQUIZ_POINTS / $this->quiz->choiceCount) * (EQUIZ_SEVERITY_MULTIPLY ? $this->quiz->eQuizSeverity : 1);
 
 			$points -= $wrongAnswered * (EQUIZ_POINTS / $this->quiz->choiceCount) * (EQUIZ_SEVERITY_MULTIPLY ? $this->quiz->eQuizSeverity : 1);
+			
+			if (defined('GUTHABEN_ENABLE_GLOBAL') && defined('EQUIZ_GUTHABEN_WIN') && EQUIZ_GUTHABEN_WIN > 0)
+			{
+				$guthaben = $rightAnswered * (EQUIZ_GUTHABEN_WIN / $this->quiz->choiceCount) * (EQUIZ_SEVERITY_MULTIPLY ? $this->quiz->eQuizSeverity : 1);
+				$guthaben -= $wrongAnswered * (EQUIZ_GUTHABEN_WIN / $this->quiz->choiceCount) * (EQUIZ_SEVERITY_MULTIPLY ? $this->quiz->eQuizSeverity : 1);
+				
+				Guthaben :: add($guthaben, 'wbb.guthaben.log.equizwin', $this->quiz->question, 'index.php?page=Thread&postID='.$this->quiz->messageID);
+			}
 		}
 
 		$editor = WCF :: getUser()->getEditor();

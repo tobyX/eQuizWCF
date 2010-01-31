@@ -13,7 +13,7 @@ require_once (WCF_DIR . 'lib/system/exception/UserInputException.class.php');
 class EQuizEditor extends PollEditor
 {
 	protected $eQuizAnswers = array ();
-	protected $eQuizSeverity = 1;
+	protected $eQuizSeverity = 0;
 	protected $errorField = '';
 	protected $errorType = '';
 
@@ -80,8 +80,6 @@ class EQuizEditor extends PollEditor
 	 */
 	public function readParams()
 	{
-		parent :: readParams();
-
 		if (isset($_POST['eQuizAnswers']))
 		{
 			$eQuizAnswers = StringUtil :: trim($_POST['eQuizAnswers']);
@@ -93,6 +91,8 @@ class EQuizEditor extends PollEditor
 
 		//chooseable answers will always base on count of correct answers
 		$this->data['choiceCount'] = count($this->eQuizAnswers);
+		
+		parent :: readParams();
 	}
 
 	/**
@@ -135,7 +135,7 @@ class EQuizEditor extends PollEditor
 		}
 
 		//anticheat
-		if ($this->eQuizSeverity < 1 || $this->eQuizSeverity > 5)
+		if ($this->eQuizSeverity != 0 && (EQUIZ_SEVERITY_MULTIPLY && ($this->eQuizSeverity < 1 || $this->eQuizSeverity > 5)))
 		{
 			$this->errorField = 'eQuizSeverity';
 			$this->errorType = 'invalid';
@@ -171,6 +171,11 @@ class EQuizEditor extends PollEditor
 					'eQuizCreated' => ++$editor->eQuizCreated,
 					'eQuizPoints' => $editor->eQuizPoints + EQUIZ_CREATED
 				));
+				
+				if (defined('GUTHABEN_ENABLE_GLOBAL') && defined('EQUIZ_GUTHABEN_CREATE') && EQUIZ_GUTHABEN_CREATE > 0)
+				{
+					Guthaben :: add(EQUIZ_GUTHABEN_CREATE, 'wbb.guthaben.log.equizcreated', $this->question, 'index.php?page=Thread&postID='.$this->messageID);
+				}
 			}
 		}
 		else if ($this->pollID)

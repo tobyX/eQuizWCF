@@ -23,7 +23,7 @@
 				<categoryname>equiz.points</categoryname>
 				<optiontype>integer</optiontype>
 				<showorder>1</showorder>
-				<defaultvalue>10</defaultvalue>
+				<defaultvalue>5</defaultvalue>
 			</option>
 			<option name="equiz_points">
 				<categoryname>equiz.points</categoryname>
