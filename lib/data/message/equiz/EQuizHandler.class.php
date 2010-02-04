@@ -298,10 +298,11 @@ class EQuizHandler
 			
 			if (defined('GUTHABEN_ENABLE_GLOBAL') && defined('EQUIZ_GUTHABEN_WIN') && EQUIZ_GUTHABEN_WIN > 0)
 			{
-				$guthaben = $rightAnswered * (EQUIZ_GUTHABEN_WIN / $this->quiz->choiceCount) * (EQUIZ_SEVERITY_MULTIPLY ? $this->quiz->eQuizSeverity : 1);
-				$guthaben -= $wrongAnswered * (EQUIZ_GUTHABEN_WIN / $this->quiz->choiceCount) * (EQUIZ_SEVERITY_MULTIPLY ? $this->quiz->eQuizSeverity : 1);
-				
-				Guthaben :: add($guthaben, 'wbb.guthaben.log.equizwin', $this->quiz->question, 'index.php?page=Thread&postID='.$this->quiz->messageID);
+				$guthaben = $rightAnswered * (EQUIZ_GUTHABEN_WIN / $this->quiz->choiceCount);
+				$guthaben -= $wrongAnswered * (EQUIZ_GUTHABEN_WIN / $this->quiz->choiceCount);
+			
+				if ($guthaben > 0)
+					Guthaben :: add($guthaben, 'wbb.guthaben.log.equizwin', $this->quiz->question, 'index.php?page=Thread&postID='.$this->quiz->messageID);
 			}
 		}
 

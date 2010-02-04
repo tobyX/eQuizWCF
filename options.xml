@@ -39,4 +39,13 @@
 			</option>
 		</options>
 	</import>
+	
+	<delete>
+		<option name="equiz_points_created" />
+		<option name="equiz_points_right" />
+		<option name="equiz_severity_multiply_wrong" />
+		<option name="equiz_severity_multiply_right" />
+		<option name="equiz_points_wrong" />
+	</delete>
+
 </data>
