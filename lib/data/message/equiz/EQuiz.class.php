@@ -63,7 +63,7 @@ class EQuiz extends Poll
 	 *
 	 * @param	EQuizOption	$option		new option
 	 */
-	public function addOption(EQuizOption $option)
+	public function addOption(PollOption $option)
 	{
 		$this->pollOptions[$option->pollOptionID] = $option;
 	}
