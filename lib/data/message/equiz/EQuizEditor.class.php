@@ -7,13 +7,12 @@ require_once (WCF_DIR . 'lib/system/exception/UserInputException.class.php');
  *
  * @package		com.toby.wcf.equiz
  * @author		Tobias Friebel
- * @copyright	2008 Tobias Friebel
+ * @copyright		2014 Tobias Friebel
  * @license		CC Namensnennung-Keine kommerzielle Nutzung-Keine Bearbeitung <http://creativecommons.org/licenses/by-nc-nd/2.0/de/>
  */
 class EQuizEditor extends PollEditor
 {
 	protected $eQuizAnswers = array ();
-	protected $eQuizSeverity = 0;
 	protected $errorField = '';
 	protected $errorType = '';
 
@@ -91,7 +90,7 @@ class EQuizEditor extends PollEditor
 
 		//chooseable answers will always base on count of correct answers
 		$this->data['choiceCount'] = count($this->eQuizAnswers);
-		
+
 		parent :: readParams();
 	}
 
@@ -165,13 +164,13 @@ class EQuizEditor extends PollEditor
 			else
 			{
 				// create new quiz
-				$this->pollID = self :: create($this->messageID, $this->messageType, $this->question, $this->pollOptionsArray, $this->choiceCount, $this->eQuizAnswers, $this->eQuizSeverity);
+				$this->pollID = $this->createQuiz($this->messageID, $this->messageType, $this->question, $this->pollOptionsArray, $this->choiceCount, $this->eQuizAnswers, $this->eQuizSeverity);
 				$editor = WCF :: getUser()->getEditor();
 				$editor->updateOptions(array (
 					'eQuizCreated' => ++$editor->eQuizCreated,
 					'eQuizPoints' => $editor->eQuizPoints + EQUIZ_CREATED
 				));
-				
+
 				if (defined('GUTHABEN_ENABLE_GLOBAL') && defined('EQUIZ_GUTHABEN_CREATE') && EQUIZ_GUTHABEN_CREATE > 0)
 				{
 					Guthaben :: add(EQUIZ_GUTHABEN_CREATE, 'wbb.guthaben.log.equizcreated', $this->question, 'index.php?page=Thread&postID='.$this->messageID);
@@ -320,7 +319,7 @@ class EQuizEditor extends PollEditor
 	 *
 	 * @return	array		$pollMapping
 	 */
-	public static function copyAll($messageIDs, $messageMapping, $messageType = 'eQuiz')
+	public static function copyAll($messageIDs, &$messageMapping, $messageType = 'eQuiz')
 	{
 		if (empty($messageIDs))
 			return array ();
@@ -433,10 +432,11 @@ class EQuizEditor extends PollEditor
 	 * @param	integer		$choiceCount
 	 * @param 	array		$eQuizAnswers
 	 * @param 	integer		$eQuizSeverity
+	 * @param	boolean		$isPublic
 	 *
 	 * @return	integer		$pollID
 	 */
-	public static function create($messageID, $messageType, $pollQuestion, $pollOptions, $choiceCount, $eQuizAnswers, $eQuizSeverity)
+	public function createQuiz($messageID, $messageType, $pollQuestion, $pollOptions, $choiceCount, $eQuizAnswers, $eQuizSeverity)
 	{
 		// insert poll
 		$pollID = self :: insert($pollQuestion, array (
