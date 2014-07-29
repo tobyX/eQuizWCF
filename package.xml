@@ -7,8 +7,8 @@
 		<packageDescription>Ein Quizsystem fürs WBB3 - WCF-Elternpaket</packageDescription>
 		<packageURL>http://www.enigma-forum.de/board220-tobys-wbb-ecke/</packageURL>
 		<unique>1</unique>
-		<version>1.0.1</version>
-		<date>2010-01-31</date>
+		<version>1.0.2</version>
+		<date>2013-07-29</date>
 	</packageInformation>
 
 	<authorInformation>
@@ -30,7 +30,7 @@
 		<options>options.xml</options>
 		<useroptions>useroptions.xml</useroptions>
 	</instructions>
-	
+
 	<instructions type="update" fromversion="0.9*">
 		<languages languagecode="de">de.utf-8.xml</languages>
 		<languages languagecode="de-informal">de-informal.utf-8.xml</languages>
@@ -38,8 +38,13 @@
 		<templates>templates.tar</templates>
 		<options>options.xml</options>
 	</instructions>
-	
-	<instructions type="update" fromversion="1.0*">
+
+	<instructions type="update" fromversion="1.0.0">
+		<files>files.tar</files>
+		<options>options.xml</options>
+	</instructions>
+
+	<instructions type="update" fromversion="1.0.1">
 		<files>files.tar</files>
 		<options>options.xml</options>
 	</instructions>
